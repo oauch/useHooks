@@ -6,7 +6,7 @@ labels: "Feat"
 body:
   - type: textarea
     attributes:
-      label: 💨 어떤 훅을 만들어 봤나요?
+      label: 💨 어떤 훅을 만들껀가요?
       description: 훅에 대해서 설명해주세요
       placeholder: 훅에 대해서 적어주세요
     validations:
