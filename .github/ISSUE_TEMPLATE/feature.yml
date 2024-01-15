@@ -1,0 +1,13 @@
+name: "✅ Feat"
+description: "새로운 기능 템플릿"
+title: "[Feat] "
+labels: "Feat"
+
+body:
+  - type: textarea
+    attributes:
+      label: 💨 어떤 훅을 만들어 봤나요?
+      description: 훅에 대해서 설명해주세요
+      placeholder: 훅에 대해서 적어주세요
+    validations:
+      required: true
