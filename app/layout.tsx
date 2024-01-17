@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
+import GlobalStyles from "@/styles/GlobalStyles";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "useHook",
-  description: "커스텀 훅 모음",
-};
 
 export default function RootLayout({
   children,
@@ -15,7 +12,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <meta name="useHook" content="커스텀 훅 / 컴포넌트 모음" />
+      <body className={inter.className}>
+        <GlobalStyles />
+        {children}
+      </body>
     </html>
   );
 }
