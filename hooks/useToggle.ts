@@ -7,7 +7,7 @@ function useToggle() {
     setIsShow((prev) => !prev);
   };
 
-  return { isShow, toggleClick };
+  return { isShow, setIsShow, toggleClick };
 }
 
 export default useToggle;
