@@ -1,3 +1,11 @@
+"use client";
+
+import Toggle from "@/components/Toggle";
+
 export default function Home() {
-  return <span>테스트 페이지</span>;
+  return (
+    <span>
+      <Toggle />
+    </span>
+  );
 }
