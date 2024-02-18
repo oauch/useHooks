@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { create } from "zustand";
 
-function useToggle() {
-  const [isShow, setIsShow] = useState(false);
-
-  const toggleClick = () => {
-    setIsShow((prev) => !prev);
-  };
-
-  return { isShow, setIsShow, toggleClick };
+interface Props {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
+
+const useToggle = create<Props>((set) => ({
+  isOpen: false,
+  setIsOpen: (value: boolean) => set({ isOpen: !value }),
+}));
 
 export default useToggle;
