@@ -34,5 +34,7 @@ const Wrapper = styled.button<ButtonProps>`
   }}px;
   color: ${(props) => props.color};
   background: ${(props) => props.bgColor};
-  border-radius: ${(props) => props.br}px;
+  border-radius: ${(props) => props.bdr}px;
+
+  font-size: ${(props) => props.font_size}px;
 `;

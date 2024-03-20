@@ -4,7 +4,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "sm" | "md" | "lg";
   color?: string;
   bgColor?: string;
-  br?: number;
+  bdr?: number;
+  font_size?: number;
   action?: () => void;
   children?: ReactNode;
 }
