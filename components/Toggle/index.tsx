@@ -1,5 +1,5 @@
+import styled from "@emotion/styled";
 import { useState } from "react";
-import { styled } from "styled-components";
 
 function Toggle() {
   const [isOn, setIsOn] = useState(false);

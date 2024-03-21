@@ -1,8 +1,8 @@
 "use client";
 
+import styled from "@emotion/styled";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
 
 interface ModalProps {
   isShow: boolean;

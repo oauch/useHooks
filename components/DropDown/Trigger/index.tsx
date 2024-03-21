@@ -1,5 +1,5 @@
 import useToggle from "@/hooks/useToggle";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 function Trigger() {
   const { isOpen, setIsOpen } = useToggle();

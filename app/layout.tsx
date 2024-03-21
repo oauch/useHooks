@@ -1,6 +1,7 @@
 "use client";
 
-import GlobalStyles from "@/styles/GlobalStyles";
+import { reset } from "@/styles/reset";
+import { Global } from "@emotion/react";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <meta name="useHook" content="커스텀 훅 / 컴포넌트 모음" />
       <body className={inter.className}>
-        <GlobalStyles />
+        <Global styles={reset} />
         {children}
       </body>
     </html>

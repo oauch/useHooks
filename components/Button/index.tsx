@@ -1,5 +1,5 @@
 import { ButtonProps } from "@/types/button";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 
 function Button({ action, children, ...props }: ButtonProps) {
   return (
@@ -32,9 +32,9 @@ const Wrapper = styled.button<ButtonProps>`
         return 40;
     }
   }}px;
-  color: ${(props) => props.color};
-  background: ${(props) => props.bgColor};
-  border-radius: ${(props) => props.bdr}px;
+  color: ${({ color }) => color};
+  background: ${({ bgColor }) => bgColor};
+  border-radius: ${({ bdr }) => bdr && `${bdr}px`};
 
-  font-size: ${(props) => props.font_size}px;
+  font-size: ${({ font_size }) => font_size}px;
 `;

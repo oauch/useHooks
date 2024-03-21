@@ -1,12 +1,13 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   size?: "sm" | "md" | "lg";
   color?: string;
   bgColor?: string;
   bdr?: number;
   font_size?: number;
   action?: () => void;
+  disabled?: boolean;
   children?: ReactNode;
 }
 

@@ -1,5 +1,6 @@
 import useToggle from "@/hooks/useToggle";
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 
 function Menu() {
   const { isOpen } = useToggle();
