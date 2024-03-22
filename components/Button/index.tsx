@@ -1,3 +1,4 @@
+import { BUTTON_BK, BUTTON_CL } from "@/constants/color";
 import { ButtonProps } from "@/types/button";
 import styled from "@emotion/styled";
 
@@ -36,9 +37,8 @@ const Wrapper = styled.button<ButtonProps>`
         return 30;
     }
   }}px;
-  color: ${({ color }) => color};
-  background: ${({ bgColor }) => bgColor};
-  border-radius: ${({ bdr }) => bdr && `${bdr}px`};
-
-  font-size: ${({ font_size }) => font_size}px;
+  color: ${({ color = BUTTON_CL }) => color};
+  background: ${({ bgColor = BUTTON_BK }) => bgColor};
+  border-radius: ${({ bdr = 10 }) => bdr && `${bdr}px`};
+  font-size: ${({ font_size = 12 }) => font_size}px;
 `;
