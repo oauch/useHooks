@@ -3,15 +3,20 @@
 import styled from "@emotion/styled";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import Button from "../Button";
+import Flex from "../Flex";
 
 interface ModalProps {
+  type?: "default" | "Button" | "twinButton";
   isShow: boolean;
   setIsShow: Dispatch<SetStateAction<boolean>>;
   content: string;
 }
 
-function Modal({ isShow, setIsShow, content }: ModalProps) {
+function Modal({ type = "default", isShow, setIsShow, content }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+
+  if (typeof window === "undefined") return;
 
   useEffect(() => {
     const closeModal = (e: MouseEvent) => {
@@ -30,15 +35,48 @@ function Modal({ isShow, setIsShow, content }: ModalProps) {
     };
   }, [isShow]);
 
+  const renderButtonType = (type: string) => {
+    switch (type) {
+      case "Button":
+        return (
+          <Button bgColor="#000" color="#fff" bdr={25}>
+            선택
+          </Button>
+        );
+      case "twinButton":
+        return (
+          <>
+            <Button bgColor="#000" color="#fff" bdr={25}>
+              선택1
+            </Button>
+            <Button bgColor="#000" color="#fff" bdr={25}>
+              선택2
+            </Button>
+          </>
+        );
+      default:
+        return <></>;
+    }
+  };
+
   return createPortal(
     <>
-      <Background ref={modalRef} />
-      <Wrapper>
-        <ButtonWrapper>
-          <CloseButton onClick={() => setIsShow(false)} />
-        </ButtonWrapper>
-        <Title>{content}</Title>
-      </Wrapper>
+      {isShow && (
+        <>
+          <Background ref={modalRef} />
+          <Wrapper>
+            <ButtonWrapper>
+              <CloseButton onClick={() => setIsShow(false)} />
+            </ButtonWrapper>
+            <Title>{content}</Title>
+            {type.includes("Button") && (
+              <Flex justify="end" gap={8}>
+                {renderButtonType(type)}
+              </Flex>
+            )}
+          </Wrapper>
+        </>
+      )}
     </>,
     document.body
   );
@@ -57,6 +95,9 @@ const Background = styled.div`
 
 const Wrapper = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -84,6 +125,14 @@ const CloseButton = styled.button`
 `;
 
 const Title = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+
+  border: 1px solid #3f3f3f;
+  border-radius: 10px;
+
   font-size: 15px;
   text-align: center;
 `;
