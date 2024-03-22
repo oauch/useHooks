@@ -1,22 +1,77 @@
 "use client";
 
+import Button from "@/components/Button";
+import Flex from "@/components/Flex";
+import { BUTTON_BK, BUTTON_CL, CANCEL_BK, CANCEL_CL } from "@/constants/color";
+
 import styled from "@emotion/styled";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import Button from "../Button";
-import Flex from "../Flex";
 
 interface ModalProps {
   type?: "default" | "Button" | "twinButton";
   isShow: boolean;
   setIsShow: Dispatch<SetStateAction<boolean>>;
-  content: string;
+  content?: string;
+  buttonContent?: string;
+  cancelContent?: string;
+  action?: () => void;
 }
 
-function Modal({ type = "default", isShow, setIsShow, content }: ModalProps) {
+function Modal({
+  type = "default",
+  isShow,
+  setIsShow,
+  content,
+  buttonContent = "확인",
+  cancelContent = "취소",
+  action,
+}: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-
   if (typeof window === "undefined") return;
+
+  const handleAction = () => {
+    if (action) action();
+    setIsShow(!isShow);
+  };
+
+  const handleCancel = () => {
+    setIsShow(!isShow);
+  };
+
+  const renderButtonType = (type: string) => {
+    switch (type) {
+      case "Button":
+        return (
+          <Button bgColor="green" color="#fff" bdr={25} action={handleAction}>
+            {buttonContent}
+          </Button>
+        );
+      case "twinButton":
+        return (
+          <>
+            <Button
+              bgColor={BUTTON_BK}
+              color={BUTTON_CL}
+              bdr={25}
+              action={handleAction}
+            >
+              {buttonContent}
+            </Button>
+            <Button
+              bgColor={CANCEL_BK}
+              color={CANCEL_CL}
+              bdr={25}
+              action={handleCancel}
+            >
+              {cancelContent}
+            </Button>
+          </>
+        );
+      default:
+        return <></>;
+    }
+  };
 
   useEffect(() => {
     const closeModal = (e: MouseEvent) => {
@@ -34,30 +89,6 @@ function Modal({ type = "default", isShow, setIsShow, content }: ModalProps) {
       document.removeEventListener("mousedown", closeModal);
     };
   }, [isShow]);
-
-  const renderButtonType = (type: string) => {
-    switch (type) {
-      case "Button":
-        return (
-          <Button bgColor="#000" color="#fff" bdr={25}>
-            선택
-          </Button>
-        );
-      case "twinButton":
-        return (
-          <>
-            <Button bgColor="#000" color="#fff" bdr={25}>
-              선택1
-            </Button>
-            <Button bgColor="#000" color="#fff" bdr={25}>
-              선택2
-            </Button>
-          </>
-        );
-      default:
-        return <></>;
-    }
-  };
 
   return createPortal(
     <>
