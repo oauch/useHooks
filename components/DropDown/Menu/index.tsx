@@ -3,18 +3,17 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 function Menu() {
-  const { isOpen } = useToggle();
+  const { isOpen, setIsOpen } = useToggle();
+  const clickMenu = () => {
+    setIsOpen(isOpen);
+    console.log("메뉴 클릭 됨");
+  };
+
   return (
     <StyledWrapper $isOpen={isOpen}>
-      <StyledItems onClick={() => console.log("첫번째 아이템")}>
-        테스트 1
-      </StyledItems>
-      <StyledItems onClick={() => console.log("두번째 아이템")}>
-        테스트 2
-      </StyledItems>
-      <StyledItems onClick={() => console.log("세번째 아이템")}>
-        테스트 3
-      </StyledItems>
+      <StyledItems onClick={clickMenu}>테스트 1</StyledItems>
+      <StyledItems onClick={clickMenu}>테스트 2</StyledItems>
+      <StyledItems onClick={clickMenu}>테스트 3</StyledItems>
     </StyledWrapper>
   );
 }
