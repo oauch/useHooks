@@ -1,3 +1,4 @@
+import { PRIMARY } from "@/constants/color";
 import useToggle from "@/hooks/useToggle";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
@@ -8,7 +9,7 @@ function Menu() {
     setIsOpen(isOpen);
   };
   return (
-    <StyledWrapper $isOpen={isOpen}>
+    <StyledWrapper isOpen={isOpen}>
       <StyledItems onClick={clickMenu}>테스트 1</StyledItems>
       <StyledItems onClick={clickMenu}>테스트 2</StyledItems>
       <StyledItems onClick={clickMenu}>테스트 3</StyledItems>
@@ -27,7 +28,6 @@ const fadeIn = keyframes`
   }
 `;
 
-// 페이드아웃 애니메이션을 정의합니다.
 const fadeOut = keyframes`
   from {
     opacity: 1;
@@ -37,15 +37,15 @@ const fadeOut = keyframes`
   }
 `;
 
-const StyledWrapper = styled.ul<{ $isOpen: boolean }>`
-  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
+const StyledWrapper = styled.ul<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   position: absolute;
   top: 50px;
   width: 200px;
   height: fit-content;
-  border: 1px solid #000;
   border-radius: 10px;
-  animation: ${({ $isOpen }) => ($isOpen ? fadeIn : fadeOut)} 0.3s ease-in-out;
+  background-color: ${PRIMARY};
+  animation: ${({ isOpen }) => (isOpen ? fadeIn : fadeOut)} 0.3s ease-in-out;
 `;
 
 const StyledItems = styled.li`
@@ -53,4 +53,9 @@ const StyledItems = styled.li`
   justify-content: flex-start;
   padding: 20px;
   cursor: pointer;
+
+  :hover {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 `;

@@ -2,7 +2,14 @@
 
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
-import { BUTTON_BK, BUTTON_CL, CANCEL_BK, CANCEL_CL } from "@/constants/color";
+import {
+  BLACK,
+  BUTTON_CL,
+  CANCEL_BK,
+  CANCEL_CL,
+  PRIMARY,
+  WHITE,
+} from "@/constants/color";
 
 import styled from "@emotion/styled";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
@@ -43,7 +50,7 @@ function Modal({
     switch (type) {
       case "Button":
         return (
-          <Button bgColor="green" color="#fff" bdr={25} action={handleAction}>
+          <Button bgColor="green" color={WHITE} bdr={25} action={handleAction}>
             {buttonContent}
           </Button>
         );
@@ -51,7 +58,7 @@ function Modal({
         return (
           <>
             <Button
-              bgColor={BUTTON_BK}
+              bgColor={PRIMARY}
               color={BUTTON_CL}
               bdr={25}
               action={handleAction}
@@ -136,10 +143,10 @@ const Wrapper = styled.div`
   max-width: 100%;
   max-height: 90%;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: ${WHITE};
   padding: 20px 20px;
 
-  border: 1px solid #000;
+  border: 1px solid ${BLACK};
   border-radius: 10px;
 `;
 

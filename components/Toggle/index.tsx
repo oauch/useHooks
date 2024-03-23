@@ -1,3 +1,4 @@
+import { PRIMARY, TOGGLE_BK, WHITE } from "@/constants/color";
 import styled from "@emotion/styled";
 import { useState } from "react";
 
@@ -31,7 +32,7 @@ const StyledToggleSlider = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: ${TOGGLE_BK};
   transition: 0.4s;
   border-radius: 40px;
 
@@ -42,7 +43,7 @@ const StyledToggleSlider = styled.div`
     height: 15px;
     left: 4px;
     bottom: 4.5px;
-    background-color: #fff;
+    background-color: ${WHITE};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -56,6 +57,6 @@ const StyledCheckBox = styled.input`
   }
 
   &:checked + ${StyledToggleSlider} {
-    background-color: #1f9100;
+    background-color: ${PRIMARY};
   }
 `;
