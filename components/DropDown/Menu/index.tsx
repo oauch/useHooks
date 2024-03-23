@@ -6,9 +6,7 @@ function Menu() {
   const { isOpen, setIsOpen } = useToggle();
   const clickMenu = () => {
     setIsOpen(isOpen);
-    console.log("메뉴 클릭 됨");
   };
-
   return (
     <StyledWrapper $isOpen={isOpen}>
       <StyledItems onClick={clickMenu}>테스트 1</StyledItems>
